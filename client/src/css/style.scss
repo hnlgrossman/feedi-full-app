@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+:root {
+    --h1: 42px;
+    --h2: 38px;
+    --h3: 32px;
+    --h4: 26px;
+    --h5: 20px;
+    --h6: 16px;
+
+    --color: #98BB9A;
+    --color_bolder: #59815b;
+
+    --font1: 'Open Sans', sans-serif;
+    --font2: 'Assistant', sans-serif;
+
+    --gap_small: 8px;
+    --gap: 16px;
+    --gap_l: 32px;
+    --gap_xl: 47px;
+    --gap_xxl: 100px;
+
+    --padding_inline: 22px;
+
+    --shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    --radius_small: 12px;
+    --radius: 20px;
+    --radius_big: 40px;
+
+    --headerHeight: 60px;
+
+}
+
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+    font-family: var(--font1);
+}
+
+html, body { font-size: var(--h5); direction: rtl; }
+
+.btn { text-align: center; outline: none; border: none; background: var(--color); border-radius: var(--radius); font-weight: bold; width: fit-content; color: #000; box-shadow: var(--shadow);  font-size: var(--h4); padding: 6px 12px; 
+    &.big { border-radius: var(--radius_big); font-size: var(--h1); padding-block: 18px; }
+}
+
+.icon, .pic { background-position: center; background-repeat: no-repeat; }
+.icon { background-size: contain;}
+.pic { background-size: cover;}
+
+.user_icon { background-image: url(../assets/user_icon.svg); }
+
+textarea, input[type=text], input[type=email], input[type=tel], input[type=password], select {
+    & { outline: none; border: none; box-shadow: var(--shadow); border-radius: var(--radius); background: #fff; width: 100%;    padding: 12px 8px; font-size: var(--h5);  }
+}
+
+ul { list-style: none; }
+
+.label_input_transition { position: relative;
+    &.active {
+        label {
+            top: 0%; right: 0%; transform: translate(calc(var(--gap_small) * -1), calc(-100% - 0px)); 
+        }
+    }
+    input {}
+    input:focus ~ label {
+        top: 0%; right: 0%; transform: translate(calc(var(--gap_small) * -1), calc(-100% - 0px)); 
+    }
+    label { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); transition: 0.2s all;}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.loader { background-image: url('@/assets/loader.png'); width: 40vw; height: 40vw; margin: 0 auto; margin-top: var(--gap_xl); animation: rotate 1s linear infinite; }
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
