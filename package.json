@@ -1,7 +1,8 @@
 {
     "scripts": {
-        "start": "cd client && npx rimraf node_modules && npm install && npm run build && cd ../server && npx rimraf node_modules && npm install && npm run start",
-        "dev": "nodemon app.js"
+        "start": "cd ../server && npm install && npm run start",
+        "dev": "nodemon app.js",
+        "dp": "cd client && npm install && npm run build && cd .. && git add . && git commit -m \"to heroku\" && git push heroku main"
     },
     "main": "app.js",
     "dependencies": {
