@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "cd client && npm install && npm run build && cd ../server && npm install && npm run start",
+        "start": "cd client && npm install && npm install -g @vue/cli@latest && npm run build && cd ../server && npm install && npm run start",
         "dev": "nodemon app.js"
     },
     "main": "app.js",
