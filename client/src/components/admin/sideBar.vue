@@ -5,7 +5,7 @@
         <div class="side_bar_container"  v-click-away="() => { active ? $emit('close') : null }" >
             <router-link @click="$emit('close')" :to="{ name: 'admin'}" class="logo"></router-link>
             <ul>
-                <router-link @click="$emit('close')" v-for="(link, i) in sideBarMenu" :to="link.to" :key="i">
+                <router-link @click="$emit('close')" v-bind="link?.bind" v-for="(link, i) in sideBarMenu" :to="link.to" :key="i">
                     <div class="icon_fa"><i :class="link.fa_icon"></i></div>
                     <span v-text="link.name"></span>
                 </router-link>
@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?.id}}})
+        this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?._id}}, bind: { target: '_blank'}})
         if (this.user?.userType === "admin") {
             this.sideBarMenu.push({ name: 'הוספת משתמש',  fa_icon: "fa-solid fa-user-tie", to: { name: 'add_users'}})
         }
