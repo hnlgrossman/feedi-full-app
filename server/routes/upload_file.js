@@ -12,7 +12,7 @@ router.post("/", [requireAuth(), uploadFile], (req, res) => {
 });
 
 router.delete("/", async (req, res) => {
-    console.log(req.body); 
+    // console.log(req.body); 
     const directory = './assets/uploads';
     const ret = await deleteFilesInDirectory(directory, req.body.filesToDelete);
     res.send(ret)

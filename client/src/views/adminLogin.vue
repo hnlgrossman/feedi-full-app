@@ -47,7 +47,7 @@ export default {
                     // window.location.reload()
                 }
             }, (error) => {
-                console.log(error);
+                // console.log(error);
                 if (error.data === "invalid email or password.") {
                     alert('אימייל או סיסמא לא נכונים');
                     // this.formData = { email: '', password: '' }

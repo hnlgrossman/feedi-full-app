@@ -67,7 +67,7 @@ userSchema.methods.encryptPassword = async function () {
 userSchema.methods.parse = async function () {
     if (this?.questions) {
         for (let i = 0; i < this.questions.length; i++) {
-            console.log(this.questions[i]);
+            // console.log(this.questions[i]);
             this.questions[i].answers.sort((a, b) => a.value > b.value ? -1 : 1);
             // console.log(this.questions[i].answers.sort((a, b) => a.value + b.value));
             

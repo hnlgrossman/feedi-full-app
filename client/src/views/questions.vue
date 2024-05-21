@@ -150,7 +150,7 @@ export default {
       if (presents === 0) {statusTextIndex = 0}
       if (this.currentStep === this.user.questions.length) {statusTextIndex = 4}
       if (presents === 100) {statusTextIndex = 5}
-      console.log(presents, this.currentStep, statusTextIndex);
+      // console.log(presents, this.currentStep, statusTextIndex);
       let text = this.getLang(this.statusText[statusTextIndex], this.lang);
       return { text, presents, statusReview}
     }

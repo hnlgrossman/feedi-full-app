@@ -123,7 +123,7 @@ export default {
             )
         },
         async handleFileUpload(event) {
-            console.log("file");
+            // console.log("file");
             const file = event.target.files[0];
             // if (!file) return;
             // console.log(this.file);
@@ -164,7 +164,7 @@ export default {
             const headers = await {
                 Authorization: localStorage.getItem('user_token')
             }
-            console.log(this.filesToDelete);
+            // console.log(this.filesToDelete);
             return await this.axios.delete(window.host_url + 'upload_file', {
                 data: { filesToDelete: filename },
                 headers: headers

@@ -31,6 +31,7 @@ export default {
         }
     },
     mounted() {
+        this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?.id}}})
         if (this.user?.userType === "admin") {
             this.sideBarMenu.push({ name: 'הוספת משתמש',  fa_icon: "fa-solid fa-user-tie", to: { name: 'add_users'}})
         }
