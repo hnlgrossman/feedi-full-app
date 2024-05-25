@@ -2,7 +2,7 @@
     "scripts": {
         "start": "cd server && npm install && npm run start",
         "dev": "nodemon app.js",
-        "dp": "cd client && npm install && npm run build && cd .. && git add . && git commit -m \"new build\" && git push"
+        "dp": "cd client && npm install && npm run build && cd .."
     },
     "main": "app.js",
     "dependencies": {
