@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "dev": "set NODE_ENV='development' && set MONGODB_CONNECT_URI = 'mongodb://localhost/foodi' cd server npm run dev",
-        "prod": "export NODE_ENV='production' && export MONGODB_CONNECT_URI = 'mongodb+srv://ghananel20:RM9tvXWxhSxood74@feedi.0icwdjt.mongodb.net/?retryWrites=true&w=majority&appName=feedi' && cd server && npm install && npm run prod",
+        "dev": "set NODE_ENV='development' && set MONGODB_CONNECT_URI='mongodb://localhost/foodi' cd server npm run dev",
+        "prod": "export NODE_ENV='production' && export MONGODB_CONNECT_URI='mongodb+srv://ghananel20:RM9tvXWxhSxood74@feedi.0icwdjt.mongodb.net/?retryWrites=true&w=majority&appName=feedi' && cd server && npm install && npm run prod",
         "build": "cd client && npm install && npm run build && cd .."
     },
     "main": "app.js",
