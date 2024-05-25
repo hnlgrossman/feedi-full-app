@@ -7,7 +7,7 @@ module.exports = function(app) {
     app.use(express.json())
     applyRoutesByFiles(app);
     app.use('/assets', express.static('assets'));
-    if (process.env.NODE_ENV === 'production' || true) {
+    if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.resolve(__dirname, '../public/')))
         app.get(/.*/, (req, res) => res.sendFile(path.resolve(__dirname, '../public/index.html')))
         // app.get(/.*/, (req, res) => res.sendFile(path.resolve(__dirname, '../public/')))
