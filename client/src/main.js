@@ -11,9 +11,12 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import './css/style.scss'
 import $bus from './eventbus';
 
+if (process.env.NODE_ENV === 'production') {
+    window.host_url = '/';
+} else {
+    window.host_url = window.location.protocol + "//" + 'localhost:3000/';
+}
 // dev
-// window.host_url = window.location.protocol + "//" + 'localhost:3000/';
-window.host_url = '/';
 window.api_url = window.host_url + "api/";
 
 // prod

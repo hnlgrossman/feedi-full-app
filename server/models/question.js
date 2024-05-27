@@ -39,7 +39,7 @@ const questionSchema = mongoose.Schema({
 })
 
 questionSchema.statics.parse = function (question) {
-    question.pic_parsed = config.get('HOST') + question.pic;
+    // question.pic_parsed = config.get('HOST') + question.pic;
     question.answers.sort((a, b) => a.value - b.value);
     return question;
 }

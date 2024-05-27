@@ -29,7 +29,8 @@ const globalMixin = {
           return arr; // for testing
       },
       getPic(picName) {
-        return this.host_url + 'uploads/' + picName
+        return picName;
+        // return this.host_url + 'uploads/' + picName
       },
       logout() {
         window.localStorage.setItem('user_token', '')
