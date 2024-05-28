@@ -1,0 +1,51 @@
+async handleFileUpload(event) {
+    // console.log("file");
+    const file = event.target.files[0];
+    // if (!file) return;
+    // console.log(this.file);
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+    if (!file?.type) return false;
+    if (!allowedTypes.includes(file.type)) {
+        this.msg.text = "Filetype is wrong!!";
+        this.msg.color = "red";
+        return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+        this.msg.text = "Too large, max size allowed is 10mb";
+        this.msg.color = "red";
+        return;
+    }
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+        const headers = {
+            Authorization: localStorage.getItem('user_token')
+        }
+        const data = await this.axios.post(window.host_url + 'upload_file', formData, { headers });
+        if (this.formData.pic) {
+            // this.filesToDelete.push(this.formData.pic)
+            this.deleteFiles(this.formData.pic)
+        }
+        // console.log(data);
+        this.formData.pic = data.data.filename
+
+        
+        // alert('Image uploaded successfully!');
+    } catch (error) {
+        console.log(error);
+        alert('בעיה בהעלאת תמונה צרו קשר עם מנהל האתר.')
+    }
+},
+
+async deleteFiles(filename) {
+    const headers = await {
+        Authorization: localStorage.getItem('user_token')
+    }
+    // console.log(this.filesToDelete);
+    return await this.axios.delete(window.host_url + 'upload_file', {
+        data: { filesToDelete: filename },
+        headers: headers
+    });
+}
+
+
