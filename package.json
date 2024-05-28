@@ -1,7 +1,9 @@
 {
     "scripts": {
-        "dev": "set NODE_ENV=development && set MONGODB_CONNECT_URI=mongodb://localhost/foodi && cd server && npm run dev",
-        "prod": "export NODE_ENV='production' && export MONGODB_CONNECT_URI='mongodb+srv://ghananel20:RM9tvXWxhSxood74@feedi.0icwdjt.mongodb.net/?retryWrites=true&w=majority&appName=feedi' && cd server && npm install && npm run prod",
+        "setEnvDev": "set NODE_ENV=development && set MONGODB_CONNECT_URI=mongodb://localhost/foodi && set AWS_ACCESS_KEY_ID=AKIAZI2LFIXH5O3S3S4C && set AWS_SECRET_ACCESS_KEY=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 && set AWS_REGION=eu-central-1 && set S3_BUCKET=feedi-file-storge",
+        "setEnvProd": "export NODE_ENV='production' && export MONGODB_CONNECT_URI='mongodb+srv://ghananel20:RM9tvXWxhSxood74@feedi.0icwdjt.mongodb.net/?retryWrites=true&w=majority&appName=feedi' && export AWS_ACCESS_KEY_ID=AKIAZI2LFIXH5O3S3S4C && export AWS_SECRET_ACCESS_KEY=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 && export AWS_REGION=eu-central-1 && export S3_BUCKET=feedi-file-storge",
+        "dev": "set NODE_ENV=development&&set MONGODB_CONNECT_URI=mongodb://localhost/foodi&&set AWS_ACCESS_KEY_ID=AKIAZI2LFIXH5O3S3S4C&&set AWS_SECRET_ACCESS_KEY=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&&set AWS_REGION=eu-central-1&&set S3_BUCKET=feedi-file-storge&& cd server && npm run dev",
+        "prod": "export NODE_ENV='production' && export MONGODB_CONNECT_URI='mongodb+srv://ghananel20:RM9tvXWxhSxood74@feedi.0icwdjt.mongodb.net/?retryWrites=true&w=majority&appName=feedi' && export AWS_ACCESS_KEY_ID='AKIAZI2LFIXH5O3S3S4C' && export AWS_SECRET_ACCESS_KEY='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' && export AWS_REGION='eu-central-1' && export S3_BUCKET='feedi-file-storge' && cd server && npm install && npm run prod",
         "build": "cd client && npm install && npm run build && cd .."
     },
     "main": "app.js",
