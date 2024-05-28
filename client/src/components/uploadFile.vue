@@ -17,6 +17,7 @@ export default {
             selectedFile: null,
             presignedUrl: '',
             selectedFileName: '', // Store the file name
+            filename: '',
             fileUrl: '', // Store the file URL
             bucket: 'feedi-file-storge',
             folder: 'questions_images',
@@ -32,7 +33,6 @@ export default {
             }
 
             try {
-
                 this.axios.delete(window.host_url + 'upload_file/delete_file', {
                     headers,
                     data: {
@@ -51,11 +51,11 @@ export default {
                 Authorization: localStorage.getItem('user_token')
             }
             const response = await this.axios.post(window.host_url + 'upload_file/generate-presigned-url', {
-                fileName: this.selectedFile.name,
                 fileType: this.selectedFile.type,
                 folder: this.folder,
             }, { headers });
             this.presignedUrl = response.data.url;
+            this.filename = response.data.filename;
         },
         async handleFileUpload(event) {
             this.selectedFile = event.target.files[0];
@@ -71,8 +71,8 @@ export default {
                 const response = await this.axios.put(this.presignedUrl, this.selectedFile, options);
                 if (response.status !== 200) {
                     // alert('בעיה בהעלאת תמונה צרו קשר עם מנהל האתר.')
-                } else {
-                    this.fileUrl = `https://${this.bucket}.s3.${this.region}.amazonaws.com/${this.folder}/${this.selectedFile.name}`; // Construct the public URL
+                } else { 
+                    this.fileUrl = `https://${this.bucket}.s3.${this.region}.amazonaws.com/${this.folder}/${this.filename}`; // Construct the public URL
                     this.$emit('update:modelValue', this.fileUrl)
                 }
             } catch (error) {
