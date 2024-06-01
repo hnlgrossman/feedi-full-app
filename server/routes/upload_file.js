@@ -3,15 +3,7 @@ const { requireAuth } = require('../middleware/auth');
 const { uploadFile } = require('../middleware/tools');
 const { deleteFilesInDirectory } = require('../functions')
 const router = express.Router();
-const AWS = require('aws-sdk');
 const url = require('url');
-
-
-const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION,
-});
 
 router.post("/", [requireAuth(), uploadFile], (req, res) => {
     const fileUrl = req.file
@@ -29,7 +21,7 @@ router.post("/generate-presigned-url", [requireAuth()], (req, res) => {
         ContentType: fileType,
         ACL: 'public-read'
     };
-    s3.getSignedUrl('putObject', s3Params, (err, url) => {
+    global.s3.getSignedUrl('putObject', s3Params, (err, url) => {
         if (err) {
           return res.status(500).json({ error: 'Error generating pre-signed URL' });
         }
@@ -47,7 +39,7 @@ router.delete("/delete_file", [requireAuth()], async (req, res) => {
       Key: key,
     };
   
-    s3.deleteObject(s3Params, (err, data) => {
+    global.s3.deleteObject(s3Params, (err, data) => {
       if (err) {
         return res.status(500).send({ error: 'Error deleting file', errorData: err });
       }

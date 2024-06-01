@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-#welcome_page { min-height: 100vh; display: flex; flex-direction: column; gap: 26px;
+#welcome_page { min-height: 100vh; display: flex; flex-direction: column; gap: var(--gap_xl);
   .langs {     position: absolute; top: 10px; right: 10px; width: 18vw; z-index: 1;display: flex; gap: var(--gap_small); flex-direction: column;
     &:not(.open){
       >:not(:first-child) { display: none;}
@@ -60,9 +60,9 @@ export default {
     }
   }
   &>.pic { background-image: url('@/assets/feedi_logo_big.png'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 100%; aspect-ratio: 16 / 9;  }
-  .text_btn_container { display: flex; flex-direction: column;  gap: 26px; padding-inline: var(--padding_inline);
-    .text_container { text-align: center; display: flex; flex-direction: column; gap: var(--gap_s);
-      h3 { font-size: var(--h2);}
+  .text_btn_container { display: flex; flex-direction: column;  gap: var(--gap_xl); padding-inline: var(--padding_inline);
+    .text_container { text-align: center; display: flex; flex-direction: column; gap: var(--gap);
+      h3 { font-size: var(--h3);}
       p { font-size: var(--h4);}
     }
     .btn { margin: 0 auto; width: 80%; transition: 0.3s; text-decoration: none;
