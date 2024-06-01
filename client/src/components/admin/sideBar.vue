@@ -37,7 +37,7 @@ export default {
     mounted() {
         this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?._id}}, bind: { target: '_blank'}})
         if (this.user?.userType === "admin") {
-            this.sideBarMenu.push({ name: 'הוספת משתמש',  fa_icon: "fa-solid fa-user-tie", to: { name: 'add_users'}})
+            this.sideBarMenu.push({ name: 'ניהול משתמשים',  fa_icon: "fa-solid fa-user-tie", to: { name: 'add_users'}})
         }
     },
     methods: {

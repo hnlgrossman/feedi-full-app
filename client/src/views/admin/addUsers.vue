@@ -13,6 +13,7 @@
                 <div class="delete" @click.stop="handleDelete(userItem._id)" ><i class="fa-solid fa-trash"></i></div>
             </div>
             <div class="text" v-text="userItem.name"></div>
+            <router-link @click.stop="" :to="{ name: 'review', params:{user_id: userItem._id}}" v-bind="{ target: '_blank'}" >לדף שאלות</router-link>
             <!-- <div class="pic" :style="'background-image: url(' + getPic(question.pic) + ');'"></div> -->
         </li>
     </ul>
@@ -98,6 +99,7 @@ export default {
             .delete { display: flex; width: 28px; height: 28px; border-radius: 50%; background: #EAEAEA; align-items: center; justify-content: center;
                 i, svg { color: var(--color); font-size: 16px }
             }
+            a {  color: #000;}
         }
     }
 }

@@ -167,13 +167,14 @@ export default {
       .answer {
         &.selected { 
           &::after { content: var(--text); background-image: none; font-size: 15px; display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; }
+          &::before { display: block;}
         }
       }
     }
-    .answer { cursor: pointer; transition: 0.2s opacity; opacity: 1; width: 100%; aspect-ratio: 16 / 8; display: flex; justify-content: center; align-items: center; border-radius: var(--radius);
+    .answer { cursor: pointer; transition: 0.2s opacity; opacity: 1; width: 100%; aspect-ratio: 16 / 8; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radius);
+      &::before { content: ''; display: none; flex: 1; aspect-ratio: 1; background-image: url('@/assets/Check_ring_light.svg'); background-position: center; background-size: contain; background-repeat: no-repeat;  }
       &.selected {  
-        &::after { content: ''; height: 100%; aspect-ratio: 1; background-image: url('@/assets/Check_ring_light.svg'); background-position: center; background-size: contain; background-repeat: no-repeat;  }
-        
+        &::before { display: block;}
         .answer_text { display: none; }
       }
       .answer_text { font-size: var(--h6); width: fit-content; }

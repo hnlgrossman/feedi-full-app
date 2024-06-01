@@ -80,6 +80,10 @@ router.put('/update_user', requireAuth(), async (req, res) => {
         // console.log(user.phone, fields?.phone);
         user.phone = fields?.phone
     }
+    if (fields?.google_review_link && fields?.google_review_link !== user.google_review_link) {
+        // console.log(user.phone, fields?.phone);
+        user.google_review_link = fields?.google_review_link;
+    }
     if (fields?.email && fields?.email !== user.email) {
         user.email = fields?.email
     }

@@ -61,7 +61,7 @@ export default {
         if (this.$route.params.status === 'good') {
             func = () => {
                 window.location = this.user.google_review_link
-                this.$router.push({ name: 'results', params: { status: this.status.statusReview } })
+                // this.$router.push({ name: 'results', params: { status: this.status.statusReview } })
             }
         } else {
             func = () => {
