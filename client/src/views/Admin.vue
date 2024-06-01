@@ -7,7 +7,9 @@
         </div>
         <router-link :to="{name: 'admin'}" class="logo_small"></router-link>
     </header>
-    <SideBar :active="sideBarOpen" @close="sideBarOpen=false" :user="user" />
+    <transition name="slide">
+        <SideBar v-if="$route.name !== 'admin_login' && sideBarOpen" @close="sideBarOpen=false" :user="user" />
+    </transition>
     <div id="admin_content">
         <router-view :user="user" ></router-view>
     </div>
@@ -88,5 +90,17 @@ export default {
         // padding-top: var(--headerHeight);
     
     }
+}
+.slide-enter-active, .slide-leave-active {
+    // transition: transform 1s ease;
+    // .side_bar_container {
+    //     transition: transform 1.5s ease;
+    // }
+}
+
+.slide-enter, .slide-enter-to /* .slide-leave-active in <2.1.8 */ {
+}
+.slide-enter, .slide-leave-to /* .slide-leave-active in <2.1.8 */ {
+
 }
 </style>

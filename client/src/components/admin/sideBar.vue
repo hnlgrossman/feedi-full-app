@@ -1,8 +1,8 @@
 <template>
 
-  <div v-if="$route.name !== 'admin_login'" id="side_bar" :class="{ active: active}">
+  <div id="side_bar" >
 
-        <div class="side_bar_container"  v-click-away="() => { active ? $emit('close') : null }" >
+        <div class="side_bar_container"  v-click-away="() => { $emit('close')  }" >
             <router-link @click="$emit('close')" :to="{ name: 'admin'}" class="logo"></router-link>
             <ul>
                 <router-link @click="$emit('close')" v-bind="link?.bind" v-for="(link, i) in sideBarMenu" :to="link.to" :key="i">
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    props: ['active', 'user'],
+    props: ['user'],
     data() {
         return {
             sideBarMenu: [
@@ -73,12 +73,19 @@ export default {
 
 <style lang="scss">
 #side_bar {
-        &.active { 
-            &::after {  pointer-events: all; background: rgba(100, 100, 100, 0.2);  }
-            .side_bar_container { transform: translateX(0%); }
+    // transform: translateX(100%);
+        &::after {  content: '';height: 100vh   ; position: absolute; inset: 0px;background: rgba(100, 100, 100, 0.2);  }
+        &.slide-enter-to {
+            // .side_bar_container { transform: translateX(100%); }
         }
-        &::after {  content: ''; pointer-events: none; background: rgba(100, 100, 100, 0); position: absolute; inset: 0px; transition: 0.3s all; }
-        .side_bar_container { z-index: 1 ; transition: 0.3s all;  position: fixed; right: -1px; top: 0; bottom: 0;  transform: translateX(100%); width: 70%;border-top-left-radius: var(--radius);
+        // &.active { 
+        //     &::after {  pointer-events: all; background: rgba(100, 100, 100, 0.2);  }
+        //     .side_bar_container { transform: translateX(0%); }
+        // }
+        // &::after {  content: ''; pointer-events: none; background: rgba(100, 100, 100, 0); position: absolute; inset: 0px; transition: 0.3s all; }
+        
+        .side_bar_container { z-index: 1 ;  position: fixed; right: -1px; top: 0; bottom: 0;  width: 70%;border-top-left-radius: var(--radius);
+            // transform: translateX(100%); transition: 0.3s all;
     border-bottom-left-radius: var(--radius);background: linear-gradient(90deg, var(--color_bolder), var(--color)); padding: var(--padding_inline);  display: flex; flex-direction: column; gap: var(--gap_xl); }
         .logo { width: 80%; aspect-ratio: 16 / 9; background: #fff; margin: 0 auto; }
         ul { display: flex; flex-direction: column; gap: var(--gap_small);  
