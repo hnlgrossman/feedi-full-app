@@ -49,6 +49,7 @@ export default {
         } else {
             this.$router.push({ name: 'admin_login'})
         }
+        
     },
     methods: {
 //         async translate(sourceText) {
