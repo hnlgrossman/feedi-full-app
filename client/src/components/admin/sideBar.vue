@@ -9,6 +9,10 @@
                     <div class="icon_fa"><i :class="link.fa_icon"></i></div>
                     <span v-text="link.name"></span>
                 </router-link>
+                <a :href="user?.qr_code" v-if="user?.qr_code" download="">
+                    <div class="icon_fa"><i class="fas fa-qrcode"></i></div>
+                    <span >qr code</span>
+                </a>
                 <a @click="logout" >
                     <div class="icon_fa"><i class="fa-solid fa-right-from-bracket"></i></div>
                     <span >התנתק</span>

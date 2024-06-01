@@ -90,12 +90,39 @@ function mergeObjects(structure, validateObj, settings={separateRelationObj: fal
 }
 
 async function generateQrCode(url, filename) {
-    qr.toFile('./assets/qr_codes/' + filename, url, (err) => {
-        if (err) console.log(err);
-        console.log('QR code generated successfully');
-    });
-    const pic_url = config.get('HOST') + 'qr_codes/' + filename 
-    return pic_url;
+    // qr.toFile('./assets/qr_codes/' + filename, url, (err) => {
+    //     if (err) console.log(err);
+    //     console.log('QR code generated successfully');
+    // });
+    // const pic_url = config.get('HOST') + 'qr_codes/' + filename 
+    // return pic_url;
+    // Generate QR Code as a Data URL
+    const qrCodeDataUrl = await qr.toDataURL(url);
+
+    // Convert Data URL to Buffer
+    const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, '');
+    const qrBuffer = Buffer.from(base64Data, 'base64');
+
+    const s3Params = {
+        Bucket: process.env.S3_BUCKET,
+        Key: `qr_codes/${filename}`, // Include folder path in the Key
+        Body: qrBuffer,
+        ContentEncoding: 'base64', // Required for base64
+        ContentType: 'image/png',
+        ACL: 'public-read', // Make the file publicly readable
+    };
+
+    const res = await new Promise((resolve, reject) => {
+        global.s3.upload(s3Params, (err, data) => {
+            if (err) {
+                return resolve(null);
+            }
+            resolve(data.Location)
+            // return `https://${process.env.S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/qr_codes/${this.filename}`;
+        });
+    }) 
+    return res;
+    // Upload to S3
 }
 
 

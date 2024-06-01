@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const {User} = require('../models/user');
-const {generateQrCode} = require('../functions')
 
 // async function requireAuth(req, res, next) {
 //     const token = req.header('Authorization');

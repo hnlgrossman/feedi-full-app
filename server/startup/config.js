@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     dotenv.config({path: path.resolve(__dirname, '../../.env')})
     app.use(cors());
-    
+    // global.s3;
     global.s3 = new AWS.S3({
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

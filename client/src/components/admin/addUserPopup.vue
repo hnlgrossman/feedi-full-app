@@ -42,7 +42,7 @@
                     </select>
                 </li>
             </ul>
-            <input class="btn" type="submit" :value="editUser ? 'עדכן משתמש' : 'הוסף שאלה'">
+            <input class="btn" type="submit" :value="editUser ? 'עדכן משתמש' : 'הוסף משתמש'">
         </form>
         <p class="msg" v-text="msg.text" :style="{color: msg.color}" v-if="msg.text"></p>
     </div>

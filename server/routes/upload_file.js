@@ -1,9 +1,10 @@
 const express = require('express');
 const { requireAuth } = require('../middleware/auth');
 const { uploadFile } = require('../middleware/tools');
-const { deleteFilesInDirectory } = require('../functions')
-const router = express.Router();
+// const { generateQrCode } = require('../functions')
 const url = require('url');
+const router = express.Router();
+
 
 router.post("/", [requireAuth(), uploadFile], (req, res) => {
     const fileUrl = req.file

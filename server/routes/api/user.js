@@ -23,8 +23,9 @@ router.post('/signup', requireAuth('admin'), async (req, res) => {
     }
     user = new User(fields);
     user = await user.save();
-    user.qr_code = await generateQrCode(config.get('HOST') + 'review/' + user._id, user._id + '.png')
-
+    user.qr_code = await generateQrCode(process.env.HOST_URL + 'review/' + user._id, Math.random().toString(16).slice(2) + '.png')
+    // user.qr_code = await generateQrCode(process.env.HOST_URL + 'review/' + user._id, Math.random().toString(16).slice(2) + '.png')
+    
     const validation = await user.validateUser();
     if (validation?.error) {
         return res.status(400).send(validation.error.details[0].message);
