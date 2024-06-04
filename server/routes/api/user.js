@@ -19,7 +19,8 @@ router.post('/signup', requireAuth('admin'), async (req, res) => {
     fields.description = {
         text: 'תודה שביקרת אצלנו אנחנו עובדים כל יום על מנת לספק ללקוחות שלנו את החוויה הטובה ביותר וחשוב לנו לשמוע איך היה. נשמח שתענו על מספר שאלות מבטיחים שזה יהיה זריז :)',
         textEn: "Thank you for visiting us, we work every day to provide our customers with the best experience and it is important to us to hear how it was. We'd love for you to answer a few questions, we promise it will be quick :)",
-        textRu: "Спасибо, что посетили нас, мы работаем каждый день, чтобы предоставить нашим клиентам лучший опыт, и нам важно услышать, как это было. Мы будем рады, если вы ответите на несколько вопросов, обещаем, что это будет быстро :)"
+        textRu: "Спасибо, что посетили нас, мы работаем каждый день, чтобы предоставить нашим клиентам лучший опыт, и нам важно услышать, как это было. Мы будем рады, если вы ответите на несколько вопросов, обещаем, что это будет быстро :)",
+        textRo: "Vă mulțumim că ne-ați vizitat, lucrăm în fiecare zi pentru a oferi clienților noștri cea mai bună experiență și este important pentru noi să auzim cum a fost. Ne-ar plăcea să răspundeți la câteva întrebări, vă promitem că va fi rapid :)"
     }
     user = new User(fields);
     user = await user.save();
@@ -101,6 +102,9 @@ router.put('/update_user', requireAuth(), async (req, res) => {
         console.log(user?.description?.textEn);
         // if (!user?.description?.textEn) {
             user.description.textEn = await translate(fields.description.text, 'he', "en");
+        // }
+        // if (!user?.description?.textRo) {
+            user.description.textRo = await translate(fields.description.text, 'he', "ro");
         // }
         // if (!user?.description?.textRu) {
             user.description.textRu = await translate(fields.description.text, 'he', "ru");

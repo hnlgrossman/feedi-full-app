@@ -25,6 +25,7 @@ export default {
                 {key: 'he', pic: 'he_flag.png'},
                 {key: 'en', pic: 'en_flag.png'},
                 {key: 'ru', pic: 'ru_flag.png'},
+                {key: 'ro', pic: 'ro_flag.png'},
             ]
         }
     },

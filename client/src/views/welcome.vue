@@ -25,11 +25,13 @@ export default {
         text: 'נשמח לקבל את הביקורת שלך',
         textEn: 'We would love to receive your review',
         textRu: 'Мы будем рады получить ваш отзыв',
+        textRo: 'Ne-ar plăcea să primim recenzia dvs',
       },
       btnText: {
         text: 'מתחילים',
         textEn: 'starting',
         textRu: 'начиная',
+        textRo: 'pornire',
 
       }
     }
@@ -57,6 +59,7 @@ export default {
       &.he { background-image: url('@/assets/he_flag.png');}
       &.en { background-image: url('@/assets/en_flag.png');}
       &.ru { background-image: url('@/assets/ru_flag.png');}
+      &.ro { background-image: url('@/assets/ro_flag.png');}
     }
   }
   &>.pic { background-image: url('@/assets/feedi_logo_big.png'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 100%; aspect-ratio: 16 / 9;  }

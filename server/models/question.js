@@ -20,6 +20,10 @@ const questionSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    textRo: {
+        type: String,
+        required: false
+    },
     pic: {
         type: String,
         required: false
@@ -30,6 +34,7 @@ const questionSchema = mongoose.Schema({
             text: { type: String, require: true},
             textEn: { type: String, require: false},
             textRu: { type: String, require: false},
+            textRo: { type: String, require: false},
         }
     ],
     createdAt: {

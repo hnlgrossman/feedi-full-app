@@ -14,6 +14,7 @@ const globalMixin = {
         if (obj && obj[key]) {
           if (lang === 'en') return obj[key + 'En'];
           if (lang === 'ru') return obj[key + 'Ru'];
+          if (lang === 'ro') return obj[key + 'Ro'];
           else return obj[key];
         }
         return '';

@@ -33,38 +33,45 @@ export default {
       firstSelect: {
         text: 'לחיצה נוספת לאישור',
         textRu: 'Нажмите еще раз, чтобы подтвердить',
-        textEn: 'Click again to confirm'
+        textEn: 'Click again to confirm',
+        textRo: 'Faceți clic din nou pentru a confirma',
       },
       statusText: [
         {
           "text": "רק כמה שאלות לפניך",
           "textRu": "Только пару вопросов",
-          "textEn": "Only a few questions"
+          "textEn": "Only a few questions",
+          "textRo": "Doar câteva întrebări pentru tine",
         },
         {
           "text": "עבודה טובה המשך כך",
           "textRu": "Хорошая работа, продолжайте",
-          "textEn": "Good job, keep on going"
+          "textEn": "Good job, keep on going",
+          "textRo": "Buna treaba tine-o tot asa",
         },
         {
           "text": "חצי דרך מאחוריך",
           "textRu": "Прошли уже пол пути",
-          "textEn": "Halfway through"
+          "textEn": "Halfway through",
+          "textRo": "La jumătatea drumului în spatele tău",
         },
         {
           "text": "כמעט סיימנו",
           "textRu": "Почти закончили",
-          "textEn": "Almost done"
+          "textEn": "Almost done",
+          "textRo": "Aproape am terminat",
         },
         {
           "text": "שאלה אחרונה ודי",
           "textRu": "Последний вопрос и все",
-          "textEn": "One last question"
+          "textEn": "One last question",
+          "textRo": "O ultima intrebare",
         },
         {
           "text": "אלוף",
           "textRu": "good",
-          "textEn": "good"
+          "textEn": "good",
+          "textRo": "Campion",
         }
       ]
       
@@ -100,6 +107,7 @@ export default {
     // currentQuestionText() {
     //   if (this.lang === 'en') return this.currentQuestion.textEn;
     //   if (this.lang === 'ru') return this.currentQuestion.textRu;
+    //   if (this.lang === 'ro') return this.currentQuestion.textRo;
     //   else return this.currentQuestion.text;
     // },
     currentStep() {

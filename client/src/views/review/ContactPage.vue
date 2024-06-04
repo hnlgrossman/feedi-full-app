@@ -34,27 +34,32 @@ export default {
             title: {
                 text: 'השאירו לנו פרטים ונציג שלנו יחזור אליכם בהקדם האפשרי',
                 textEn: 'Leave us details and our representative will get back to you as soon as possible',
-                textRu: 'Оставьте нам данные и наш представитель свяжется с вами в ближайшее время.'
+                textRu: 'Оставьте нам данные и наш представитель свяжется с вами в ближайшее время.',
+                textRo: 'Lăsați-ne detalii și reprezentantul nostru vă va contacta cât mai curând posibil'
             },
             firstName: {
                 text: 'שם פרטי',
                 textEn: 'First name',
-                textRu: 'Имя'
+                textRu: 'Имя',
+                textRo: 'Nume',
             },
             phone: {
                 text: 'טלפון',
                 textEn: 'phone',
-                textRu: 'телефон'
+                textRu: 'телефон',
+                textRo: 'telefon',
             },
             note: {
                 text: 'הערות נוספות',
                 textEn: 'Additional Comments',
-                textRu: 'Дополнительные комментарии'
+                textRu: 'Дополнительные комментарии',
+                textRo: 'Comentarii suplimentare',
             },
             submit_text: {
                 text: 'שלח',
                 textEn: 'Send',
-                textRu: 'Отправлять'
+                textRu: 'Отправлять',
+                textRo: 'Trimite',
             }
         }
     },

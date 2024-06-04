@@ -39,7 +39,8 @@ const userSchema = mongoose.Schema({
     description: {
         text: String,
         textEn: String,
-        textRu: String
+        textRu: String,
+        textRo: String
     },
     qr_code: {
         type: String

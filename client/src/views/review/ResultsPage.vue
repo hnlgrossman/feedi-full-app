@@ -33,21 +33,25 @@ export default {
                 text: 'רק עוד רגע...',
                 textEn: 'Just a moment...',
                 textRu: 'Один Момент...',
+                textRo: 'O clipă...',
             },
             badTitle: {
                 text: 'נראה שלא אהבתם...',
                 textEn: "Looks like you didn't like it...",
                 textRu: 'Похоже, тебе это не понравилось...',
+                textRo: 'Se pare ca nu ti-a placut...',
             },
             badText: {
                 text: 'אתם מועברים לדף יצירת הקשר של המסעדה השאירו לנו פרטים ונציג שלנו יחזור אליכם בהקדם האפשרי',
                 textEn: "You are transferred to the restaurant's contact page. Leave us your details and our representative will get back to you as soon as possible",
-                textRu: "Вы будете перенаправлены на страницу контактов ресторана. Оставьте нам свои данные, и наш представитель свяжется с вами как можно скорее."
+                textRu: "Вы будете перенаправлены на страницу контактов ресторана. Оставьте нам свои данные, и наш представитель свяжется с вами как можно скорее.",
+                textRo: "Sunteți transferat pe pagina de contact a restaurantului Lăsați-ne datele dvs. și reprezentantul nostru vă va contacta în cel mai scurt timp posibil."
             },
             goodText: {
                 text: 'הנך מועבר לדירוג הכוכבים של גוגל נשמח לדירוג הטוב ביותר :)',
                 textEn: 'You are transferred to the Google star rating, we will be happy for the best rating :)',
                 textRu: 'Вы переведены в звездный рейтинг Google, будем рады лучшей оценке :)',
+                textRo: 'Sunteți transferat la evaluarea cu stele Google, vom fi fericiți pentru cea mai bună evaluare :)',
             }
         }
     },

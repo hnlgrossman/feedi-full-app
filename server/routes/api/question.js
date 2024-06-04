@@ -30,6 +30,7 @@ router.put('/:id', async (req, res) => {
     if (fields?.text) {
         fields.textEn = await translate(fields.text, 'he', "en");
         fields.textRu = await translate(fields.text, 'he', "ru");
+        fields.textRo = await translate(fields.text, 'he', "ro");
     }
     let question = await Question.findByIdAndUpdate(req.params.id, fields, { new: true });
     if (!question) return res.status(404).send('not found');

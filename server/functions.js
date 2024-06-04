@@ -189,6 +189,7 @@ async function createQuestion(req) {
         answers[i].textEn = await translate(answers[i].text, 'he', "en");
         // console.log(answers[i].textEn);
         answers[i].textRu = await translate(answers[i].text, 'he', "ru");
+        answers[i].textRo = await translate(answers[i].text, 'he', "ro");
     }
     let user = req.user;
 
@@ -199,6 +200,7 @@ async function createQuestion(req) {
     if (fields?.text) {
         fields.textEn = await translate(fields.text, 'he', "en");
         fields.textRu = await translate(fields.text, 'he', "ru");
+        fields.textRo = await translate(fields.text, 'he', "ro");
     }
     
     let question = new Question(fields);
