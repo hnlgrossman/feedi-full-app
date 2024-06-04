@@ -85,6 +85,9 @@ router.put('/update_user', requireAuth(), async (req, res) => {
         // console.log(user.phone, fields?.phone);
         user.google_review_link = fields?.google_review_link;
     }
+    if (fields?.selectedLang && fields?.selectedLang !== user.selectedLang) {
+        user.selectedLang = fields?.selectedLang;
+    }
     if (fields?.email && fields?.email !== user.email) {
         user.email = fields?.email
     }

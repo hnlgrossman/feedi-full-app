@@ -1,7 +1,7 @@
 <template>
   <div id="welcome_page" v-if="user">
     <div class="langs" :class="{open: langsOpen}">
-      <div class="pic" @click="selectLang(i)" :class="(lang === langItem.key && 'active') + ' ' + (langItem.key)" v-for="(langItem, i) in langs" :key="langItem.key"></div>
+      <div class="pic" @click="selectLang(i)" :class="(lang === langItem.key ? 'active' : '') + ' ' + (langItem.key)" v-for="(langItem, i) in langs" :key="langItem.key"></div>
     </div>
     <div class="pic"></div>
     <div class="text_btn_container">
@@ -12,7 +12,6 @@
         <router-link :to="{ name: 'questions'}" class="btn big" >{{ getLang(btnText, lang) }}</router-link>
     </div>
   </div>
-  <div v-else><div class="loader pic"></div></div>
 </template>
 
 <script>
@@ -37,13 +36,23 @@ export default {
     }
   },
   mounted() {
+    for (let i = 0; i < this.langs.length; i++) {
+      if (this.langs[i].key === this.lang) {
+        // console.log('====================================');
+        console.log(this.langs[i].key);
+        // console.log('====================================')s;
+        this.selectLang(i, false);
+      }
+      
+    }
     // console.log(this.user)
   },
   methods: {
-    selectLang(index) {
+    selectLang(index, is_open=null) {
       this.$emit('changeLang', this.langs[index].key)
       this.$emit('changeLangs', this.array_move(this.langs, index, 0))
-      this.langsOpen = !this.langsOpen;
+      if (is_open===null) this.langsOpen = !this.langsOpen;
+      else this.langsOpen = this.is_open;
     }
   }
 }

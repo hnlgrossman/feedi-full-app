@@ -35,6 +35,15 @@
                     <input type="password" v-model="formData.password" name="password" placeholder="סיסמא" :required="!editUser">
                 </li>
                 <li>
+                    <select required name="user_type" v-model="formData.selectedLang">
+                        <option value="">בחר שפה</option>
+                        <option value="he">עברית</option>
+                        <option value="en">אנגלית</option>
+                        <option value="ru">רוסית</option>
+                        <option value="ro">רומנית</option>
+                    </select>
+                </li>
+                <li>
                     <select required name="user_type" v-model="formData.userType">
                         <option value="">בחר סוג משתמש</option>
                         <option value="business">עסק</option>

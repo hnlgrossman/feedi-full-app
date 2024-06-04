@@ -1,5 +1,5 @@
 <template>
-    <div id="main_review_page" :class="lang + '_lang'" :dir="lang === 'he' ? 'rtl' : 'ltr'" > 
+    <div v-if="loaded" id="main_review_page" :class="lang + '_lang'" :dir="lang === 'he' ? 'rtl' : 'ltr'" > 
         <!-- <div v-if="user"> -->
             <!-- <transition name="fade" mode="out-in">
               <component :is="Component" :key="$route.path" />
@@ -9,6 +9,7 @@
             </transition>
                 <!-- </div> -->
     </div>
+    <div v-else><div class="loader pic"></div></div>
 </template>
 
 <script>
@@ -17,6 +18,7 @@ export default {
     // components: { WelcomePage, },
     data() {
         return {
+            loaded:false,
             user: null,
             faqs: null,
             feedback: null,
@@ -33,10 +35,12 @@ export default {
         this.api({ action: 'user/' + this.$route.params.user_id, data: {}, method: 'get'}, (data) => {
             if (data) {
                 this.user = data;
+                this.lang = this.user?.selectedLang || 'he'
             } else {
                 alert('עסק לא נמצא');
                 window.location = '/'
             }
+            this.loaded = true;
         })
         
         if ( this.$route.name === 'review') {

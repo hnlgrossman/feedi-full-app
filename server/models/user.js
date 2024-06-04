@@ -30,6 +30,10 @@ const userSchema = mongoose.Schema({
     business_name: {
         type: String
     },
+    selectedLang: {
+        type: String,
+        default: 'he'
+    },
     logo: {
         type: String
     },
