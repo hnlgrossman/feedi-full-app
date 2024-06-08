@@ -19,6 +19,32 @@ const globalMixin = {
         }
         return '';
       },
+      async downloadFileFromUrl(url, filename) {
+          try {
+              const response = await fetch(url, {
+                  mode: 'cors' // Ensure the server allows cross-origin requests
+              });
+              const blob = await response.blob();
+              const objectURL = URL.createObjectURL(blob);
+
+              // Create a new anchor element
+              const a = document.createElement('a');
+              a.href = objectURL;
+              a.download = filename;
+
+              // Append the anchor to the body (required for Firefox)
+              document.body.appendChild(a);
+
+              // Trigger a click event on the anchor to start the download
+              a.click();
+
+              // Clean up by revoking the object URL and removing the anchor element
+              URL.revokeObjectURL(objectURL);
+              document.body.removeChild(a);
+          } catch (error) {
+              console.error('Failed to download image', error);
+          }
+      },
       array_move(arr, old_index, new_index) {
           if (new_index >= arr.length) {
               var k = new_index - arr.length + 1;

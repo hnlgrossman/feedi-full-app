@@ -5,7 +5,7 @@
               <component :is="Component" :key="$route.path" />
             </transition> -->
             <transition name="fade" mode="out-in">
-                <router-view :lang="lang" :langs="langs" @changeLang="lang=$event" @changeLangs="langs=$event" @feedback="feedback=$event" :feedback="feedback"  @faqs="faqs=$event" :faqs="faqs" class="child-view" :user="user" ></router-view>
+                <router-view :isSendFeedback="isSendFeedback" :lang="lang" :langs="langs" @changeLang="lang=$event" @changeLangs="langs=$event" @feedback="feedback=$event; isSendFeedback=true" :feedback="feedback"  @faqs="faqs=$event" :faqs="faqs" class="child-view" :user="user" ></router-view>
             </transition>
                 <!-- </div> -->
     </div>
@@ -22,6 +22,7 @@ export default {
             user: null,
             faqs: null,
             feedback: null,
+            isSendFeedback: false,
             lang: 'he',
             langs: [
                 {key: 'he', pic: 'he_flag.png'},

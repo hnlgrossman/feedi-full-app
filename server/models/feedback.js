@@ -5,7 +5,7 @@ const FeedbackModel = mongoose.model('Feedback', mongoose.Schema({
         type: Boolean,
         required: false
     },
-    userId: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: false
@@ -15,6 +15,12 @@ const FeedbackModel = mongoose.model('Feedback', mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Question',
             required: true
+        },
+        question_text: {
+            type: String
+        },
+        answer_text: {
+            type: String
         },
         rating: {
             type: Number, 

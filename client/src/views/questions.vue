@@ -84,7 +84,7 @@ export default {
         this.confirmAnswerIndex = null
         const existingIndex = this.formData.faqs.findIndex(item => item.question === question_id)
         if (existingIndex > -1) this.formData.faqs.splice(existingIndex, 1);
-        this.formData.faqs.push( { rating, question: question_id} )
+        this.formData.faqs.push( { rating, question: question_id, answer_text: this.currentQuestion.answers[answerIndex].text, question_text: this.currentQuestion.text } )
         // this.$route.push({ params: { step: this.currentStep + 1 }})
         // alert(1)
         if (this.currentStep < this.user.questions.length) {

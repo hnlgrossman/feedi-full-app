@@ -1,6 +1,6 @@
 <template>
     <addUserPopup @addUser="addUser" @updateUser="updateUser" :editUser="editUser" :active="addUserPopupOpen" @close="handleClose"/>
-  <div id="add_users">
+  <div id="users_manager">
     <div class="head">
         <h1>משתמשים</h1>
         <div class="icon_container" @click="addUserPopupOpen = true">
@@ -14,6 +14,7 @@
             </div>
             <div class="text" v-text="userItem.name"></div>
             <router-link @click.stop="" :to="{ name: 'review', params:{user_id: userItem._id}}" v-bind="{ target: '_blank'}" >לדף שאלות</router-link>
+            <a @click.stop="loginAs(userItem)" >התחבר כיוזר</a>
             <!-- <div class="pic" :style="'background-image: url(' + getPic(question.pic) + ');'"></div> -->
         </li>
     </ul>
@@ -78,6 +79,18 @@ export default {
             // this.editUser = false;
             this.handleClose()
             this.init();
+        },
+        loginAs (login_user){
+            this.api({action: 'user/login_as', data: {user_id: login_user?._id}, method: 'post'},
+            (data) => {
+                if (data) {
+                    localStorage.setItem('user_token', data);
+                    this.$router.push({ name: 'edit_form'}).then(() => { this.$router.go(0) })
+                    // this.$router.push({ name: 'edit_form'})
+                }
+            }, (error) => {
+                console.error(error.data);
+            })
         }
     }
 
@@ -85,7 +98,7 @@ export default {
 </script>
 
 <style lang="scss">
-#add_users { padding-block: 30px; padding-inline: var(--padding_inline); display: flex; flex-direction: column; gap: var(--gap_l); min-height: calc(100vh - var(--headerHeight));
+#users_manager { padding-block: 30px; padding-inline: var(--padding_inline); display: flex; flex-direction: column; gap: var(--gap_l); min-height: calc(100vh - var(--headerHeight));
     .head { display: flex; justify-content: space-between; 
         .icon_container { width: 48px; height: 48px; border-radius: 50%; background: var(--color); display: flex; align-items: center; justify-content: center; 
             i, svg { font-size: 22px; color: #fff; }

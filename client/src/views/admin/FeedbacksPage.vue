@@ -1,7 +1,7 @@
 <template>
   <div id="feedbacks_page">
     <div class="filters">
-        <div class="status_filter">
+        <!-- <div class="status_filter">
             <label for="statusSelect"></label>
             <select id="statusSelect" v-model="selectedStatusFilter">
                 <option :value="status.value" v-text="status.name" :key="status.value" v-for="status in filterStatus"></option>
@@ -10,8 +10,10 @@
         <div class="date_filter">
             <label for="dateInput">תאריך</label>
             <input type="date" id="dateInput" v-model="selectedDateFilter">
-        </div>
+        </div> -->
     </div>
+
+    <div class="btn" @click="getExcel">הורד אקסל</div>
 
     <ul></ul>
   </div>
@@ -42,10 +44,25 @@ export default {
                 console.error(error.data, 'hnl');
             }
         )
+    },
+    methods: {
+        getExcel() {
+            this.api({action: 'feedback/get_feedbacks_excel', data: {}, method: 'get'},
+            (data) => {
+                if (data?.url) {
+                    this.downloadFileFromUrl(data.url, 'feedbacks_report.xlsx')
+                }
+            }, (error) => {
+                console.error(error.data);
+            })
+        }
     }
 }
 </script>
 
-<style>
+<style lang="scss">
+#feedbacks_page {
+    .btn { margin: 0 auto; margin-top: 100px;}
 
+}
 </style>

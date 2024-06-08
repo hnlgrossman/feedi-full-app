@@ -9,7 +9,7 @@
                     <div class="icon_fa"><i :class="link.fa_icon"></i></div>
                     <span v-text="link.name"></span>
                 </router-link>
-                <a v-if="user?.qr_code" @click="downloadImage(user?.qr_code, 'qr_code.png')">
+                <a v-if="user?.qr_code" @click="downloadFileFromUrl(user?.qr_code, 'qr_code.png')">
                     <div class="icon_fa"><i class="fas fa-qrcode"></i></div>
                     <span >qr code</span>
                 </a>
@@ -37,36 +37,11 @@ export default {
     mounted() {
         this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?._id}}, bind: { target: '_blank'}})
         if (this.user?.userType === "admin") {
-            this.sideBarMenu.push({ name: 'ניהול משתמשים',  fa_icon: "fa-solid fa-user-tie", to: { name: 'add_users'}})
+            this.sideBarMenu.push({ name: 'ניהול משתמשים',  fa_icon: "fa-solid fa-user-tie", to: { name: 'users_manager'}})
         }
     },
     methods: {
-        async downloadImage(url, filename) {
-            try {
-                const response = await fetch(url, {
-                    mode: 'cors' // Ensure the server allows cross-origin requests
-                });
-                const blob = await response.blob();
-                const objectURL = URL.createObjectURL(blob);
-
-                // Create a new anchor element
-                const a = document.createElement('a');
-                a.href = objectURL;
-                a.download = filename;
-
-                // Append the anchor to the body (required for Firefox)
-                document.body.appendChild(a);
-
-                // Trigger a click event on the anchor to start the download
-                a.click();
-
-                // Clean up by revoking the object URL and removing the anchor element
-                URL.revokeObjectURL(objectURL);
-                document.body.removeChild(a);
-            } catch (error) {
-                console.error('Failed to download image', error);
-            }
-        }
+        
     }
 }
 </script>

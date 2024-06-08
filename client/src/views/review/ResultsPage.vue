@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    props: ['faqs', 'user', 'lang'],
+    props: ['faqs', 'user', 'lang', 'isSendFeedback'],
     data() {
         return {
             goodTitle: {
@@ -59,7 +59,12 @@ export default {
         let time = 2000;
         let func;
         let start = Date.now();
-        this.addFeedback()
+        if (!this.isSendFeedback) {
+            this.addFeedback();
+        } 
+        // else {
+        //     this.$router.replace({ name: 'review', params: {user_id: this.user._id}})
+        // }
         const timeTaken = Date.now() - start;
         time -= timeTaken
         if (this.$route.params.status === 'good') {
@@ -76,7 +81,7 @@ export default {
     },
     methods: {
         addFeedback() {
-            this.api({action: 'feedback', data: { faqs: this.faqs}, method: 'post'},
+            this.api({action: 'feedback', data: { faqs: this.faqs, user_id: this.user._id, is_good: this.$route.params.status === 'good' }, method: 'post'},
                 (data) => {
                     if (data) {
                     this.$emit('feedback', data)

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const ExcelJS = require('exceljs');
 const qr = require('qrcode');
 const config = require('config');
 const { log } = require('console');
-const { Question } = require('./models/question')
+const { Question } = require('./models/question');
 
 function parse_route_path(fullPath) {
     let pathFile = './';
@@ -210,11 +211,26 @@ async function createQuestion(req) {
     return {question, user}
 }
 
+async function generateExcel(columns, data) {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Feedback Report');
+
+    worksheet.columns = columns;
+
+    for (let item of data) {
+        worksheet.addRow(item);
+    }
+    const buffer = workbook.xlsx.writeBuffer();
+    return buffer;
+}
+
+
 module.exports = {
     applyRoutesByFiles,
     mergeObjects,
     generateQrCode,
     deleteFilesInDirectory,
     translate,
-    createQuestion
+    createQuestion,
+    generateExcel
 };

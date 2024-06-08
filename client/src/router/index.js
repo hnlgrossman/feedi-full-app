@@ -6,7 +6,7 @@ import QuestionsPage from '@/views/questions.vue'
 import adminLogin from '@/views/adminLogin.vue'
 import Admin from '@/views/Admin.vue'
 import EditForm from '@/views/admin/EditForm.vue'
-import AddUsers from '@/views/admin/addUsers.vue'
+import usersManager from '@/views/admin/usersManager.vue'
 import ResultsPage from '@/views/review/ResultsPage.vue'
 import ContactPage from '@/views/review/ContactPage.vue'
 import ThanksPage from '@/views/review/ThanksPage.vue'
@@ -61,9 +61,9 @@ const routes = [
         component: EditForm
       },
       {
-        name: 'add_users',
-        path: 'add_users',
-        component: AddUsers
+        name: 'users_manager',
+        path: 'users_manager',
+        component: usersManager
       },
       {
         name: 'feedbacks',

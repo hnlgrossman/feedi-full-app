@@ -4,15 +4,15 @@
     <form @submit.prevent="updateFeedback">
         <ul>
             <li class="label_input_transition" :class="{ active: formData.name}">
-                <input v-model="formData.name" type="text" name="first_name" id="first_name" required>
+                <input v-model="formData.name" type="text" name="first_name" id="first_name">
                 <label for="first_name" v-text="getLang(firstName, lang)"></label>
             </li>
             <li class="label_input_transition" :class="{ active: formData.phone}">
-                <input v-model="formData.phone" type="tel" name="tel" id="phone" required>
+                <input v-model="formData.phone" type="tel" name="tel" id="phone">
                 <label for="phone" v-text="getLang(phone, lang)"></label>
             </li>
             <li class="label_input_transition" :class="{ active: formData.note}">
-                <textarea v-model="formData.note" type="text" name="note" id="note"></textarea>
+                <textarea v-model="formData.note" type="text" name="note" id="note" required></textarea>
                 <label for="note" v-text="getLang(note, lang)"></label>
             </li>
         </ul>

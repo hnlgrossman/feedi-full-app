@@ -67,6 +67,11 @@ router.post('/login', async (req, res) => {
     res.send(token);
 })
 
+router.post('/login_as', requireAuth('admin'), async (req, res) => {
+    const token = await jwt.sign( { _id: req.body.user_id }, 'jwtPrivateKey');
+    res.send(token);
+})
+
 router.put('/update_user', requireAuth(), async (req, res) => {
     let user = await User.findOne({_id: req.query.user_id})
     // console.log(user.name);
