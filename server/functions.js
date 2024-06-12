@@ -126,6 +126,13 @@ async function generateQrCode(url, filename) {
     // Upload to S3
 }
 
+function isNull(param) {
+    if (param === null || param === undefined){
+        return true;
+    }
+    return false;
+}
+
 
 async function deleteFilesInDirectory(directory, filesToDelete) {
     fs.readdir(directory, (err, files) => {
@@ -139,7 +146,7 @@ async function deleteFilesInDirectory(directory, filesToDelete) {
                     console.error('Error deleting file:', err);
                     return;
                 }
-                console.log(`Deleted ${filesToDelete}`);
+                // console.log(`Deleted ${filesToDelete}`);
             });
         } else {
 
@@ -151,7 +158,7 @@ async function deleteFilesInDirectory(directory, filesToDelete) {
                             console.error('Error deleting file:', err);
                             return;
                         }
-                        console.log(`Deleted ${file}`);
+                        // console.log(`Deleted ${file}`);
                     });
                 }
             }
@@ -226,6 +233,7 @@ async function generateExcel(columns, data) {
 
 
 module.exports = {
+    isNull,
     applyRoutesByFiles,
     mergeObjects,
     generateQrCode,

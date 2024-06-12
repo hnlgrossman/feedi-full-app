@@ -6,6 +6,7 @@ import QuestionsPage from '@/views/questions.vue'
 import adminLogin from '@/views/adminLogin.vue'
 import Admin from '@/views/Admin.vue'
 import EditForm from '@/views/admin/EditForm.vue'
+import AdditionalData from '@/views/admin/AdditionalData.vue'
 import usersManager from '@/views/admin/usersManager.vue'
 import ResultsPage from '@/views/review/ResultsPage.vue'
 import ContactPage from '@/views/review/ContactPage.vue'
@@ -59,6 +60,11 @@ const routes = [
         name: 'edit_form',
         path: 'edit_form',
         component: EditForm
+      },
+      {
+        name: 'additional_data',
+        path: 'additional_data',
+        component: AdditionalData
       },
       {
         name: 'users_manager',

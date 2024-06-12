@@ -19,6 +19,7 @@ const globalMixin = {
         }
         return '';
       },
+      
       async downloadFileFromUrl(url, filename) {
           try {
               const response = await fetch(url, {

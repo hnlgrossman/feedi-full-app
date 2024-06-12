@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loaded" id="main_review_page" :class="lang + '_lang'" :dir="lang === 'he' ? 'rtl' : 'ltr'" > 
+    <div v-if="loaded" id="main_review_page" :style="'--color: ' + user.mainColor + '; '" :class="lang + '_lang'" :dir="lang === 'he' ? 'rtl' : 'ltr'" > 
         <!-- <div v-if="user"> -->
             <!-- <transition name="fade" mode="out-in">
               <component :is="Component" :key="$route.path" />

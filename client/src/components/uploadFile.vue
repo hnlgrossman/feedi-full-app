@@ -10,7 +10,11 @@
 export default {
     props: {
         modelValue: String,
-        text: String
+        text: String,
+        folder: {
+            type: String,
+            default: 'questions_images'
+        }
     },
     data() {
         return {
@@ -20,7 +24,7 @@ export default {
             filename: '',
             fileUrl: '', // Store the file URL
             bucket: 'feedi-file-storge',
-            folder: 'questions_images',
+            // folder: 'questions_images',
             region: 'eu-central-1'
         }
     },
@@ -95,6 +99,6 @@ export default {
     }
     .delete { display: none;}
     label { font-size: var(--h4); color: var(--color); text-align: center;  display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;}
-    #upload_file {opacity: 0; z-index: -1; width: 0; }
+    #upload_file {opacity: 0; z-index: -1; width: 0; position: absolute;}
 }
 </style>

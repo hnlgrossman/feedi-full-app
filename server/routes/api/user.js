@@ -1,7 +1,7 @@
 const express = require('express');
 const {User} = require('../../models/user');
 const {Question} = require('../../models/question');
-const {createQuestion, generateQrCode, translate} = require('../../functions');
+const {createQuestion, generateQrCode, translate, isNull} = require('../../functions');
 const { requireAuth }= require('../../middleware/auth')
 const router = express.Router();
 const Joi = require('joi');
@@ -76,38 +76,46 @@ router.put('/update_user', requireAuth(), async (req, res) => {
     let user = await User.findOne({_id: req.query.user_id})
     // console.log(user.name);
     let fields = req.body;
-    if (fields?.name && fields?.name !== user.name) {
+    if (!isNull(fields?.name) && fields?.name !== user.name) {
         user.name = fields?.name
     }
-    if (fields?.business_name && fields?.business_name !== user.business_name) {
+    if (!isNull(fields?.business_name) && fields?.business_name !== user.business_name) {
         user.business_name = fields?.business_name
     }
-    if (fields?.phone && fields?.phone !== user.phone) {
+    if (!isNull(fields?.phone) && fields?.phone !== user.phone) {
         // console.log(user.phone, fields?.phone);
         user.phone = fields?.phone
     }
-    if (fields?.google_review_link && fields?.google_review_link !== user.google_review_link) {
+    if (!isNull(fields?.logo) && fields?.logo !== user.logo) {
+        // console.log(user.logo, fields?.logo);
+        user.logo = fields?.logo
+    }
+    if (!isNull(fields?.mainColor) && fields?.mainColor !== user.mainColor) {
+        // console.log(user.mainColor, fields?.mainColor);
+        user.mainColor = fields?.mainColor
+    }
+    if (!isNull(fields?.google_review_link) && fields?.google_review_link !== user.google_review_link) {
         // console.log(user.phone, fields?.phone);
         user.google_review_link = fields?.google_review_link;
     }
-    if (fields?.selectedLang && fields?.selectedLang !== user.selectedLang) {
+    if (!isNull(fields?.selectedLang) && fields?.selectedLang !== user.selectedLang) {
         user.selectedLang = fields?.selectedLang;
     }
-    if (fields?.email && fields?.email !== user.email) {
+    if (!isNull(fields?.email) && fields?.email !== user.email) {
         user.email = fields?.email
     }
-    if (fields?.userType && fields?.userType !== user.userType) {
+    if (!isNull(fields?.userType) && fields?.userType !== user.userType) {
         if (req.user.userType != 'admin') {
             return res.status(403).send('you do not have the permission to change this data')
         }
         user.userType = fields?.userType
     }
-    if (fields?.password) {
+    if (!isNull(fields?.password)) {
         user.password = fields?.password
         await user.encryptPassword()
     }
-    if (fields?.description?.text) {
-        console.log(user?.description?.textEn);
+    if (!isNull(fields?.description?.text)) {
+        // console.log(user?.description?.textEn);
         // if (!user?.description?.textEn) {
             user.description.textEn = await translate(fields.description.text, 'he', "en");
         // }
@@ -119,6 +127,21 @@ router.put('/update_user', requireAuth(), async (req, res) => {
         // }
         // if (!user?.description?.text) {
             user.description.text = fields.description.text;
+        // }
+    }
+    if (!isNull(fields?.title?.text)) {
+        // console.log(user?.title?.textEn);
+        // if (!user?.title?.textEn) {
+            user.title.textEn = await translate(fields.title.text, 'he', "en");
+        // }
+        // if (!user?.title?.textRo) {
+            user.title.textRo = await translate(fields.title.text, 'he', "ro");
+        // }
+        // if (!user?.title?.textRu) {
+            user.title.textRu = await translate(fields.title.text, 'he', "ru");
+        // }
+        // if (!user?.title?.text) {
+            user.title.text = fields.title.text;
         // }
     }
 

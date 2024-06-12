@@ -139,7 +139,7 @@ export default {
       let text = this.getLang(this.statusText[statusTextIndex], this.lang);
 
       // statusReview
-      console.log(Math.round(parseFloat(this.formData.faqs.length / 2)), this.formData.faqs.filter(item => item.rating === 4).length);
+      // console.log(Math.round(parseFloat(this.formData.faqs.length / 2)), this.formData.faqs.filter(item => item.rating === 4).length);
       if (this.formData.faqs.filter(item => item.rating < 3).length === 0 && 
       Math.round(parseFloat(this.formData.faqs.length / 2)) <= this.formData.faqs.filter(item => item.rating === 4).length) {
         statusReview = 'good'
@@ -156,7 +156,7 @@ export default {
   .pic { width: 100%; aspect-ratio: 16 /9; }
   .question_answers_process_container { padding-inline: var(--padding_inline); display: flex; flex-direction: column; gap: var(--gap_xl);
     .question_process_container { display: flex; flex-direction: column; gap: var(--gap); 
-      .question { font-size: var(--h4); text-align: center; }
+      .question { font-size: var(--h4); text-align: center; font-weight: 600; }
       .process_status_container { display: flex; flex-direction: column; gap: var(--gap_small);
         .status { font-size: var(--h5); }
         .process_bar { display: flex; justify-content: flex-end; width: 100%; height: 14px; padding: 2px; border-radius: 8px; background: #D9D9D9; 
@@ -171,14 +171,14 @@ export default {
     &.answer_select {
       .answer:not(.selected) { opacity: 0.5;}
     }
-    &.first {
+    // &.first {
       .answer {
         &.selected { 
           &::after { content: var(--text); background-image: none; font-size: 15px; display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; }
           &::before { display: block;}
         }
       }
-    }
+    // }
     .answer { cursor: pointer; transition: 0.2s opacity; opacity: 1; width: 100%; aspect-ratio: 16 / 8; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radius);
       &::before { content: ''; display: none; flex: 1; aspect-ratio: 1; background-image: url('@/assets/Check_ring_light.svg'); background-position: center; background-size: contain; background-repeat: no-repeat;  }
       &.selected {  

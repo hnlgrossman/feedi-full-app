@@ -1,6 +1,6 @@
 <template>
+    <div id="main_edit_form" >
     <addQuestionPopup @addQuestion="addQuestion" @updateQuestion="updateQuestion" :editQuestion="editQuestion" :active="addQuestionPopupOpen" @close="togglePopup"/>
-  <div id="main_edit_form" >
     <div class="head">
         <div>
             <h1>טופס שאלות</h1>
@@ -11,11 +11,6 @@
         </div>
     </div>
     <ul class="questions_container">
-        <div class="main_text">
-            <label >עריכת טקסט ראשי</label>
-            <textarea v-model="mainText" @input="() => {isEditMainText ? null : isEditMainText = true}"></textarea>
-            <div class="btn" @click="editMainText" :class="{active: isEditMainText}">ערוך טקסט ראשי</div>
-        </div>
         <li @click="togglePopup(question)" class="question" v-for="question in questions" :key="question._id" >
             <div class="actions">
                 <div class="delete" @click.stop="handleDelete(question._id)" ><i class="fa-solid fa-trash"></i></div>
@@ -35,8 +30,6 @@ export default {
     components: {addQuestionPopup},
     data() {
         return {
-            mainText: '',
-            isEditMainText: false,
             editQuestion: null,
             addQuestionPopupOpen: false,
             questions: []
@@ -49,21 +42,6 @@ export default {
         }
     },
     methods: {
-        editMainText() {
-            if (this.isEditMainText) {
-                this.isEditMainText = false;
-                const data = { description: { text: this.mainText}}
-                this.api({ action: 'user/update_user?user_id=' + this.user._id, data, method: 'put'}, 
-                    (data) => {
-                        if (data) {
-                            console.log(data);
-                        }
-                    }, (error) => {
-                        console.error(error.data, 'hnl');
-                    }
-                )
-            }
-        },
         togglePopup(data=false) {
             if (data) {
                 

@@ -36,7 +36,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.get('/get_feedbacks_excel', requireAuth(), async (req, res) => {
-    console.log(req.user._id);
+    // console.log(req.user._id);
     let query = { user_id: req.user._id };
     // query.userId = req.query.userId;
     const feedbacks = await Feedback.find(query).populate('faqs.question');

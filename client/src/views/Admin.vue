@@ -78,7 +78,7 @@ export default {
 
 <style lang="scss">
 #main_admin { position: relative; 
-    header { padding-block: 10px; position: sticky; top: 0; background: #f9f9f9; box-shadow: var(--shadow); height: var(--headerHeight); display: flex; align-items: center; justify-content: space-between; padding-inline: var(--gap); 
+    header {     z-index: 8; padding-block: 10px; position: sticky; top: 0; background: #f9f9f9; box-shadow: var(--shadow); height: var(--headerHeight); display: flex; align-items: center; justify-content: space-between; padding-inline: var(--gap); 
         .hamburger { cursor: pointer ; 
             i, svg { font-size: 22px;  }
         }

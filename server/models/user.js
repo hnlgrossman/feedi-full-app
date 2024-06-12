@@ -34,6 +34,10 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 'he'
     },
+    mainColor: {
+        type: String,
+        default: '#98BB9A'
+    },
     logo: {
         type: String
     },
@@ -41,6 +45,12 @@ const userSchema = mongoose.Schema({
         type: String
     },
     description: {
+        text: String,
+        textEn: String,
+        textRu: String,
+        textRo: String
+    },
+    title: {
         text: String,
         textEn: String,
         textRu: String,
@@ -63,7 +73,7 @@ userSchema.methods.encryptPassword = async function () {
     const saltRounds = 10;
     try {
         this.password = await bcrypt.hash(this.password, saltRounds);
-        console.log(this.password);
+        // console.log(this.password);
     } catch (error) {
         throw error;
     }

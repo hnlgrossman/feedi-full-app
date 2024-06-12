@@ -29,6 +29,7 @@ export default {
         return {
             sideBarMenu: [
                 { name: 'עריכת טופס',  fa_icon: "fab fa-wpforms", to: { name: 'edit_form'}},
+                { name: 'פרטים כלליים',  fa_icon: "fas fa-cog", to: { name: 'additional_data'}},
                 { name: 'פידבקים',  fa_icon: "far fa-comment-dots", to: { name: 'feedbacks'}},
                 
             ]
@@ -37,7 +38,7 @@ export default {
     mounted() {
         this.sideBarMenu.push({ name: 'קישור (זמני)',  fa_icon: "fas fa-link", to: { name: 'review', params: {user_id: this.user?._id}}, bind: { target: '_blank'}})
         if (this.user?.userType === "admin") {
-            this.sideBarMenu.push({ name: 'ניהול משתמשים',  fa_icon: "fa-solid fa-user-tie", to: { name: 'users_manager'}})
+            this.sideBarMenu.push({ name: 'ניהול משתמשים',  fa_icon: "fas fa-users-cog", to: { name: 'users_manager'}})
         }
     },
     methods: {
@@ -48,8 +49,9 @@ export default {
 
 <style lang="scss">
 #side_bar {
+    &>div { z-index: 10;}
     // transform: translateX(100%);
-        &::after {  content: '';height: 100vh   ; position: absolute; inset: 0px;background: rgba(100, 100, 100, 0.2);  }
+        &::after { z-index: 9; content: '';height: 100vh   ; position: absolute; inset: 0px;background: rgba(100, 100, 100, 0.2);  }
         &.slide-enter-to {
             // .side_bar_container { transform: translateX(100%); }
         }
@@ -59,7 +61,7 @@ export default {
         // }
         // &::after {  content: ''; pointer-events: none; background: rgba(100, 100, 100, 0); position: absolute; inset: 0px; transition: 0.3s all; }
         
-        .side_bar_container { z-index: 1 ;  position: fixed; right: -1px; top: 0; bottom: 0;  width: 70%;border-top-left-radius: var(--radius);
+        .side_bar_container {  position: fixed; right: -1px; top: 0; bottom: 0;  width: 70%;border-top-left-radius: var(--radius);
             // transform: translateX(100%); transition: 0.3s all;
     border-bottom-left-radius: var(--radius);background: linear-gradient(90deg, var(--color_bolder), var(--color)); padding: var(--padding_inline);  display: flex; flex-direction: column; gap: var(--gap_xl); }
         .logo { width: 80%; aspect-ratio: 16 / 9; background: #fff; margin: 0 auto; }

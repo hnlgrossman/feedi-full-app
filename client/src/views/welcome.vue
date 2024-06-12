@@ -3,10 +3,10 @@
     <div class="langs" :class="{open: langsOpen}">
       <div class="pic" @click="selectLang(i)" :class="(lang === langItem.key ? 'active' : '') + ' ' + (langItem.key)" v-for="(langItem, i) in langs" :key="langItem.key"></div>
     </div>
-    <div class="pic"></div>
+    <div class="pic" :style="'--logo_url: url(' + user.logo +');'"></div>
     <div class="text_btn_container">
         <div class="text_container">
-            <h3 v-text="getLang(title, lang)"></h3>
+            <h3 v-text="getLang(user.title, lang)"></h3>
             <p v-text="getLang(user.description, lang)"></p>
         </div>
         <router-link :to="{ name: 'questions'}" class="btn big" >{{ getLang(btnText, lang) }}</router-link>
@@ -39,7 +39,7 @@ export default {
     for (let i = 0; i < this.langs.length; i++) {
       if (this.langs[i].key === this.lang) {
         // console.log('====================================');
-        console.log(this.langs[i].key);
+        // console.log(this.langs[i].key);
         // console.log('====================================')s;
         this.selectLang(i, false);
       }
@@ -71,7 +71,10 @@ export default {
       &.ro { background-image: url('@/assets/ro_flag.png');}
     }
   }
-  &>.pic { background-image: url('@/assets/feedi_logo_big.png'); background-size: contain; background-position: center; background-repeat: no-repeat; width: 100%; aspect-ratio: 16 / 9;  }
+  &>.pic { 
+    // background-image: url('@/assets/feedi_logo_big.png'); 
+    background-image: var(--logo_url); 
+    background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; aspect-ratio: 16 / 9;  }
   .text_btn_container { display: flex; flex-direction: column;  gap: var(--gap_xl); padding-inline: var(--padding_inline);
     .text_container { text-align: center; display: flex; flex-direction: column; gap: var(--gap);
       h3 { font-size: var(--h3);}
