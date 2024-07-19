@@ -140,8 +140,8 @@ export default {
 
       // statusReview
       // console.log(Math.round(parseFloat(this.formData.faqs.length / 2)), this.formData.faqs.filter(item => item.rating === 4).length);
-      if (this.formData.faqs.filter(item => item.rating < 3).length === 0 && 
-      Math.round(parseFloat(this.formData.faqs.length / 2)) <= this.formData.faqs.filter(item => item.rating === 4).length) {
+      // Math.round(parseFloat(this.formData.faqs.length / 2)) <= this.formData.faqs.filter(item => item.rating === 4).length
+      if (this.formData.faqs.filter(item => item.rating < 3).length === 0) {
         statusReview = 'good'
       }
 
