@@ -9,7 +9,7 @@
           <p class="status" v-text="status.text"></p>
           <div class="process_num_container">
             <p class="status_nums">
-              <span v-text="`${statusTextIndex == 5 ? currentStep : currentStep - 1}/${user.questions.length}`"></span>
+              <span v-text="`${status.presents == 100 ? currentStep : currentStep - 1}/${user.questions.length}`"></span>
             </p>
             <div class="process_bar" :style="'--process: ' + status.presents + '%;'"></div>
           </div>
