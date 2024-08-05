@@ -42,10 +42,10 @@ export default {
                 textRo: 'Se pare ca nu ti-a placut...',
             },
             badText: {
-                text: 'אתם מועברים לדף יצירת הקשר של המסעדה השאירו לנו פרטים ונציג שלנו יחזור אליכם בהקדם האפשרי',
-                textEn: "You are transferred to the restaurant's contact page. Leave us your details and our representative will get back to you as soon as possible",
-                textRu: "Вы будете перенаправлены на страницу контактов ресторана. Оставьте нам свои данные, и наш представитель свяжется с вами как можно скорее.",
-                textRo: "Sunteți transferat pe pagina de contact a restaurantului Lăsați-ne datele dvs. și reprezentantul nostru vă va contacta în cel mai scurt timp posibil."
+                text: 'אתם מועברים לדף יצירת הקשר שלנו נשמח למשוב מלא מה לא אהבתם אצלנו',
+                textEn: "You are transferred to our contact page. We will be happy to receive full feedback on what you didn't like about us.",
+                textRu: "Вы перенаправлены на нашу страницу контактов. Мы будем рады получить полный отзыв о том, что вам не понравилось в нас.",
+                textRo: "Sunteți transferat la pagina noastră de contact. Ne-ar face plăcere să primim un feedback complet despre ce nu v-a plăcut la noi.",
             },
             goodText: {
                 text: 'הנך מועבר לדירוג הכוכבים של גוגל נשמח לדירוג הטוב ביותר :)',

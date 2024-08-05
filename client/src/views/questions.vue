@@ -7,7 +7,12 @@
         <p class="question" v-text="getLang(currentQuestion, lang)"></p>
         <div class="process_status_container">
           <p class="status" v-text="status.text"></p>
-          <div class="process_bar" :style="'--process: ' + status.presents + '%;'"></div>
+          <div class="process_num_container">
+            <p class="status_nums">
+              <span v-text="`${currentStep}/${user.questions.length}`"></span>
+            </p>
+            <div class="process_bar" :style="'--process: ' + status.presents + '%;'"></div>
+          </div>
         </div>
       </div>
       <div :style="`--text: '` + getLang(firstSelect, lang) + `'`" class="answers_container" v-click-away="() => {confirmAnswerIndex = null}" :class="{ answer_select: confirmAnswerIndex != null, first: currentStep === 1}">
@@ -44,13 +49,13 @@ export default {
           "textRo": "Doar câteva întrebări pentru tine",
         },
         {
-          "text": "עבודה טובה המשך כך",
-          "textRu": "Хорошая работа, продолжайте",
-          "textEn": "Good job, keep on going",
-          "textRo": "Buna treaba tine-o tot asa",
+          "text": "עוד כמה צעדים",
+          "textRu": "Еще несколько шагов",
+          "textEn": "A few more steps",
+          "textRo": "Câteva pași înainte",
         },
         {
-          "text": "חצי דרך מאחוריך",
+          "text": "עברת חצי מהדרך",
           "textRu": "Прошли уже пол пути",
           "textEn": "Halfway through",
           "textRo": "La jumătatea drumului în spatele tău",
@@ -68,10 +73,10 @@ export default {
           "textRo": "O ultima intrebare",
         },
         {
-          "text": "אלוף",
-          "textRu": "good",
-          "textEn": "good",
-          "textRo": "Campion",
+          "text": "תודה על הפידבק!",
+          "textRu": "Спасибо за обратную связь!",
+          "textEn": "Thank you for the feedback!",
+          "textRo": "Mulțumesc pentru feedback!",
         }
       ]
       
@@ -159,8 +164,10 @@ export default {
       .question { font-size: var(--h4); text-align: center; font-weight: 600; }
       .process_status_container { display: flex; flex-direction: column; gap: var(--gap_small);
         .status { font-size: var(--h5); }
-        .process_bar { display: flex; justify-content: flex-end; width: 100%; height: 14px; padding: 2px; border-radius: 8px; background: #D9D9D9; 
-          &::after { content: '';  transition: 0.3s width; height: 100%; width: var(--process); background: var(--color); display: block;  border-radius: 6px; }
+        .process_num_container { display: flex; align-items: center; gap: var(--gap_small);
+          .process_bar { display: flex; justify-content: flex-end; flex: 1; height: 14px; padding: 2px; border-radius: 8px; background: #D9D9D9; 
+            &::after { content: '';  transition: 0.3s width; height: 100%; width: var(--process); background: var(--color); display: block;  border-radius: 6px; }
+          }
         }
       }
     

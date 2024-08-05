@@ -3,6 +3,11 @@
     <h2 v-text="getLang(title, lang)"></h2>
     <form @submit.prevent="updateFeedback">
         <ul>
+            <li class="label_input_transition" :class="{ active: formData.note}">
+                <span color="red" style="color: red;" v-text="getLang(filed_req, lang)"></span>
+                <textarea v-model="formData.note" type="text" name="note" id="note" required></textarea>
+                <label for="note" v-text="getLang(note, lang)"></label>
+            </li>
             <li class="label_input_transition" :class="{ active: formData.name}">
                 <input v-model="formData.name" type="text" name="first_name" id="first_name">
                 <label for="first_name" v-text="getLang(firstName, lang)"></label>
@@ -10,10 +15,6 @@
             <li class="label_input_transition" :class="{ active: formData.phone}">
                 <input v-model="formData.phone" type="tel" name="tel" id="phone">
                 <label for="phone" v-text="getLang(phone, lang)"></label>
-            </li>
-            <li class="label_input_transition" :class="{ active: formData.note}">
-                <textarea v-model="formData.note" type="text" name="note" id="note" required></textarea>
-                <label for="note" v-text="getLang(note, lang)"></label>
             </li>
         </ul>
         <input type="submit" class="btn big" :value="getLang(submit_text, lang)">
@@ -60,6 +61,12 @@ export default {
                 textEn: 'Send',
                 textRu: 'Отправлять',
                 textRo: 'Trimite',
+            },
+            filed_req: {
+                text: 'שדה חובה',
+                textEn: 'Required field',
+                textRu: 'Обязательное поле',
+                textRo: 'Câmp obligatoriu',
             }
         }
     },
@@ -84,7 +91,7 @@ export default {
 
 <style lang="scss">
 #contact_page { padding: 60px var(--padding_inline); display: flex; flex-direction: column; gap: 80px;
-    h2 { text-align: center; font-weight: bold; }
+    h2 { text-align: center; font-size: var(--h3); font-weight: bold; }
     form { display: flex; flex-direction: column; gap: var(--gap_xl);
         ul { display: flex; flex-direction: column; gap: var(--gap_l);
             li {  
